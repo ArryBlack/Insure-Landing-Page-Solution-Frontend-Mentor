@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Insure landing page</title>
+
+  <style>
+    :root{
+      --very-dark-violet: #2D2641;
+      --very-light-gray: #837D88;
+    }
+    body{
+      font-family: "Karla", sans-serif;
+    }
+   
+    *{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .container{
+      width: 80%;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    .nav{
+      margin-top: 1em;
+      margin-bottom: 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+    }
+    #mobile_nav_close_button{
+      display: none;
+    }
+    .nav_links{
+      display: none;
+      list-style: none;
+    }
+    
+    .nav_links li a{
+      text-decoration: none;
+      color: var(--very-light-gray);
+      margin-right: 2em;
+    }
+    #nav_mobile_link_section{
+      display: none;
+      background-color: #2C2830;
+      text-align: center;
+      height: 587px;
+      padding: 3em 0;
+      position: relative;
+    }
+    .nav_mobile_links{
+      list-style-type: none;
+      text-decoration: none;
+
+    }
+    .nav_mobile_links li{
+      margin: 2em 0;
+      
+
+    }
+    .nav_mobile_links a:hover{
+      border: 1px solid white;
+      padding: 0.5em 2em;
+      
+    }
+    .nav_mobile_links a{
+      color: white;
+      text-decoration: none;
+     
+    }
+    .mobile_menu_pattern{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      max-height: 200px;
+      
+    }
+    h1,h2{
+      font-family: "DM Serif Display", serif;
+      font-weight: 400;
+    }
+    .hero{
+      background-color: var(--very-dark-violet);
+      height:900px;
+      color: white;
+    }
+    .hero_img_mobile{
+      width: 100%;
+    }
+    .hero_img_desktop{
+      display: none;
+    }
+    .hero_content{
+      text-align: center;
+    }
+    .hero_heading{
+      
+      margin-top: -2.5em;
+    }
+    .hero_text{
+      
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+    .intro_pattern_left_desktop,.intro_pattern_right_desktop{
+      display: none;
+    }
+      
+   .intro_pattern_right_mobile{
+      position: absolute;
+      right: 0;
+      margin-top: -5.5em;
+    }
+    .starting_line{
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 10em;
+    }
+    .feature_section{
+      text-align: center;
+    }
+    .feature_section_heading{
+      margin-top: 1em;
+      font-size: 2rem;
+    }
+    .feature_list{
+      margin: 3em 0;
+    }
+    .feature_list img+h2{
+      margin-top: 0.75em;
+    }
+    .feature_list h2+p{
+      margin-top: 1em;
+    }
+    .feature_list p{
+      color: var(--very-light-gray);
+    }
+    .how_we_work{
+      background-color: var(--very-dark-violet);
+      margin-top: 1em;
+      text-align: center;
+      min-height: 310px;  
+      color: white;
+    }
+    .how_we_work_heading{
+      font-size: 3rem;
+      padding-top: 1.5em;
+      margin-bottom: 1em;
+      z-index: 2;
+    }
+   .how_we_work_button, #plans_btn{
+    color: white;
+    background-color: var(--very-dark-violet);
+    padding: 1em 2em;
+    border: 1px solid white;
+    margin-bottom: 3em;
+    transition: 300ms;
+    z-index: 2;
+   }
+   .how_we_work_button:hover, #plans_btn:hover{
+    cursor: pointer;
+    color: var(--very-dark-violet);
+    background-color: white;
+    transition: 300ms;
+   }
+    .how_we_work_pattern_mobile{
+      position: absolute;
+      right: 0;
+      
+      
+    }
+    .how_we_work_pattern_desktop{
+      display: none;
+    }
+    .footer_pattern_mobile{
+      position: relative;
+      margin-top: 10em;
+      margin-bottom: -9em;
+      z-index: -1;
+    }
+    .footer_pattern_desktop{
+      display: none;
+    }
+    .footer_social{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3em;
+      margin-bottom: 3em;
+      gap: 1em;
+    }
+    .footer_social_icons a+a{
+      margin-left: 0.5em;
+    }
+    .footer_links{
+      margin-top: 2em;
+    }
+    .link_container{
+      margin-bottom: 2em;
+    }
+    .link_heading{
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 1em;
+      color: var(--very-light-gray);
+    }
+   
+    .list_of_links{
+      list-style: none;
+      text-align: center;
+      margin-bottom: 1em;
+      
+    }
+    .list_of_links li{
+      margin-bottom: 0.25em;
+   }
+    .list_of_links li a{
+      text-decoration: none;
+      color: black;
+      font-weight: 700;
+      transition: 300ms;
+      
+    }
+    .list_of_links li a:hover{
+      text-decoration: underline;
+      transition: 200ms;
+      
+      
+    }
+   .social_icons{
+    opacity: 70%;
+   }
+   .social_icons:hover{
+    opacity: 200%;
+   }
+   @media (min-width:445px){
+    .hero_img_mobile{
+      display: none;
+    }
+    .intro_pattern_left_mobile, .intro_pattern_right_mobile{
+      visibility: hidden;
+    }
+    .hero{
+      display: flex;
+      flex-direction: row-reverse;
+      height: 700px;
+      justify-content: center;
+      
+    }
+    .hero_img_desktop{
+      display: block;
+      width: 100%;
+      
+    }
+    .hero_content{
+      text-align: left;
+    }
+    
+    .intro_pattern_right_desktop{
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+    .hero_desc{
+      width: 45%;
+      align-self: center;
+
+    }
+    .hero_img{
+      width: 50%;
+      max-width: 540px;
+      margin-bottom: -5em;
+      margin-left: -2em;
+      align-self: flex-end;
+    }
+    .hero_heading{
+      font-size: 3rem;
+    }
+    
+   }
+   @media (min-width:750px) {
+    #mobile_nav_button{
+      display: none;
+    }
+    .mobile_nav_button{
+      display: none;
+    }
+    .nav_links{
+      display: flex;
+      list-style: none;
+    }
+    .nav_links li a{
+      text-decoration: none;
+      color: var(--very-light-gray);
+      margin-right: 2em;
+    }
+    
+    .nav_links li a:hover{
+      color: black;
+    }
+    #view_plans_btn{
+      color: black;
+      border: 1px solid black;
+      padding: 0.5em 1em;
+      transition: 300ms;
+    }
+    #view_plans_btn:hover{
+      background-color: black;
+      color: white;
+      transition: 300ms;
+    }
+    .hero_img_mobile{
+      display: none;
+    }
+    .intro_pattern_left_mobile, .intro_pattern_right_mobile{
+      visibility: hidden;
+    }
+    .hero{
+      display: flex;
+      flex-direction: row-reverse;
+      height: 700px;
+      justify-content: center;
+      
+    }
+    .hero_img_desktop{
+      display: block;
+      width: 100%;
+      
+    }
+    .hero_content{
+      text-align: left;
+    }
+    .intro_pattern_left_desktop{
+      display: block;
+      position: absolute;
+      left: 0;
+      margin-top: 30em;
+    }
+    .intro_pattern_right_desktop{
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+    .hero_desc{
+      width: 45%;
+      align-self: center;
+
+    }
+    .hero_img{
+      width: 50%;
+      max-width: 540px;
+      margin-bottom: -5em;
+      margin-left: -2em;
+      align-self: flex-end;
+    }
+    .hero_heading{
+      font-size: 3rem;
+    }
+    main{
+    margin-top: 15em;
+   }
+   .starting_line{
+    visibility: hidden;
+    
+   }
+   .feature_section_heading{
+    text-align: left;
+    font-size: 3rem;
+   }
+   .heading_line{
+    border-top: 1px solid gray;
+    padding-top: 1em;
+   }
+   .features{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+   }
+   .feature_list{
+    width: 30%;
+
+   }
+    
+   
+   .how_we_work_content{
+    padding-top: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+   }
+   .how_we_work_heading{
+    width: 70%;
+    text-align: left;
+    padding:0;
+   }
+   footer{
+    margin-top: 10em;
+   }
+   .footer_pattern_mobile{
+    display: none;
+   }
+   .footer_pattern_desktop{
+    display: block;
+    position: absolute;
+    margin-top: -5em;
+   }
+   .footer_social{
+    flex-direction: row;
+    justify-content: space-between;
+   }
+   .footer_links{
+    display: flex;
+    justify-content: space-between;
+   }
+
+   }
+  
+  </style>
+</head>
+<body>
+
+  <header>
+    
+    <div class="nav container" >
+      <a href="#"><img src="images/logo.svg" alt="INSURE Logo"></a>
+      <a href="#" id="mobile_nav_button"><img src="images/icon-hamburger.svg" alt="nav_logo"></a>
+      <a href="#" id="mobile_nav_close_button"><img src="images/icon-close.svg" alt="nav_close_logo"></a>
+
+      <ul class="nav_links">
+        <li><a href="#">HOW WE WORK</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">ACCOUNT</a></li>
+        <li><a href="#" id="view_plans_btn">VIEW PLANS</a></li>
+      </ul>
+    </div>
+    <div id="nav_mobile_link_section">
+      <ul class="nav_mobile_links">
+        <li><a href="#">HOW WE WORK</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">ACCOUNT</a></li>
+        <li><a href="#">VIEW PLANS</a></li>
+      </ul>
+      <img src="images/bg-pattern-mobile-nav.svg" alt="" class="mobile_menu_pattern">
+    </div>
+  
+    <div class="hero">
+      <img src="images/bg-pattern-intro-right-desktop.svg" alt="" class="intro_pattern_right_desktop">
+      <div class="hero_img">
+        <img src="images/image-intro-mobile.jpg" alt="picture of a family of four walking together while holding hands" class="hero_img_mobile">
+        <img src="images/image-intro-desktop.jpg" alt="picture of a family of four walking together while holding hands" class="hero_img_desktop">
+      </div>
+      <div class="hero_desc">
+        <img src="images/bg-pattern-intro-left-mobile.svg" alt="" class="intro_pattern_left_mobile">
+        <div class="hero_content container">
+          <h1 class="hero_heading">Humanizing your insurance.</h1>
+          <p class="hero_text">  Get your life insurance coverage easier and faster. We blend our expertise 
+          and technology to help you find the plan that’s right for you. Ensure you 
+          and your loved ones are protected.</p>
+          <button href="#" id="plans_btn">VIEW PLANS</button>
+        </div>
+        <img src="images/bg-pattern-intro-right-mobile.svg" alt="" class="intro_pattern_right_mobile">
+      </div>
+      <img src="images/bg-pattern-intro-left-desktop.svg" alt="" class="intro_pattern_left_desktop">
+      
+    </div>
+  </header>
+  <main>
+    <hr class="starting_line">
+    <div class="feature_section container">
+      <h1 class="feature_section_heading"><span class="heading_line">We're</span> different</h1>
+      <div class="features">
+        <div class="feature_list">
+          <img src="images/icon-snappy-process.svg" alt="snappy process">
+          <h2>Snappy Process</h2>
+          <p>
+        Our application process can be completed in minutes, not hours. Don’t get 
+        stuck filling in tedious forms.</p>
+      </div>
+        <div class="feature_list">
+          <img src="images/icon-affordable-prices.svg" alt="Affordable prices">
+          <h2>Affordable Prices</h2>
+          <p>We don’t want you worrying about high monthly costs. Our prices may be low, 
+          but we still offer the best coverage possible.</p>
+        </div>
+        
+        <div class="feature_list">
+          <img src="images/icon-people-first.svg" alt="People first">
+          <h2>People First</h2>
+          <p>Our plans aren’t full of conditions and clauses to prevent payouts. We make 
+            sure you’re covered when you need it.</p>
+        </div>
+
+
+        </div>
+    </div>
+    <section class="how_we_work">
+      <img src="images/bg-pattern-how-we-work-mobile.svg" class="how_we_work_pattern_mobile">
+      <img src="images/bg-pattern-how-we-work-desktop.svg" class="how_we_work_pattern_desktop">
+      <div class="how_we_work_content container">
+        <h1 class="how_we_work_heading ">Find out more about how we work</h1>
+        <button class="how_we_work_button">HOW WE WORK</button>
+      </div>
+      
+      
+    </section>
+
+  </main>
+
+  <footer>
+
+    <img src="images/bg-pattern-footer-mobile.svg" alt="footer pattern" class="footer_pattern_mobile">
+    <img src="images/bg-pattern-footer-desktop.svg" alt="footer pattern" class="footer_pattern_desktop">
+
+
+    <div class="footer_social container">
+      <a href="#"><img src="images/logo.svg" alt="INSURE Logo"></a>
+      <div class="footer_social_icons">
+        <a href="#"><img src="images/icon-facebook.svg" alt="facebook icon" class="social_icons"></a>
+        <a href="#"><img src="images/icon-twitter.svg" alt="twitter icon" class="social_icons"></a>
+        <a href="#"><img src="images/icon-pinterest.svg" alt="pinterest icon" class="social_icons"></a>
+        <a href="#"><img src="images/icon-instagram.svg" alt="instagram icon" class="social_icons"></a>
+      </div>
+    </div>
+    <hr class="container">
+
+    <div class="footer_links container">
+      <div class="link_container">
+        <p class="link_heading">OUR COMPANY</p>
+        <ul class="list_of_links">
+          <li><a href="#">HOW WE WORK</a></li>
+          <li><a href="#">WHY INSURE?</a></li>
+          <li><a href="#">CHECK PRICE</a></li>
+          <li><a href="#">REVIEWS</a></li>
+        </ul>
+      </div>
+      <div class="link_container">
+        <p class="link_heading">HELP ME</p>
+        <ul class="list_of_links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">TERMS OF USE</a></li>
+          <li><a href="#">PRIVACY POLICY</a></li>
+          <li><a href="#">COOKIES</a></li>
+        </ul>
+      </div>
+      <div class="link_container">
+        <p class="link_heading">CONTACT</p>
+        <ul class="list_of_links">
+          <li><a href="#">SALES</a></li>
+          <li><a href="#">SUPPORT</a></li>
+          <li><a href="#">LIVE CHAT</a></li>
+        </ul>
+      </div>
+      <div class="link_container">
+        <p class="link_heading">OTHERS</p>
+        <ul class="list_of_links">
+          <li><a href="#">CAREERS</a></li>
+          <li><a href="#">PRESS</a></li>
+          <li><a href="#">LICENSES</a></li>
+        </ul>
+      </div>
+    </div>
+     
+  </footer>
+
+
+
+
+
+<script>
+  const navBtn=document.getElementById("mobile_nav_button");
+  const closeMenu=document.getElementById("mobile_nav_close_button");
+  const navLinks=document.getElementById("nav_mobile_link_section");
+
+  navBtn.addEventListener("click", function openMenu(){
+   
+      navBtn.style.display="none";
+      closeMenu.style.display="block";
+      navLinks.style.display="block";
+  });
+
+  closeMenu.addEventListener("click", function exitMenu(){
+  
+   closeMenu.style.display="none";
+   navBtn.style.display="block";
+   navLinks.style.display="none";
+  
+
+});
+  
+</script>
+
+
+
+
+
+
+  
+
+</body>
+</html>
