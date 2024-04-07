@@ -26,7 +26,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Click here for the solution](https://github.com/ArryBlack/Insure-Landing-Page-Solution-Frontend-Mentor)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Click here to preview the live site](https://arryblack.github.io/Insure-Landing-Page-Solution-Frontend-Mentor/)
 
 ## My process
 
